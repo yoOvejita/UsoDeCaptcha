@@ -1,0 +1,34 @@
+﻿@using CaptchaMvc.HtmlHelpers;
+@model UsoDeCaptcha.Models.Cuenta
+
+@using (Html.BeginForm("Registro", "Home", FormMethod.Post)) {
+    <table>
+        <tr>
+            <td>Nombre de usuario</td>
+            <td>@Html.TextBoxFor(m => m.NombreUsuario)</td>
+            <td>@Html.ValidationMessageFor(m => m.NombreUsuario)</td>
+        </tr>
+        <tr>
+            <td>Contraseña</td>
+            <td>@Html.PasswordFor(m => m.Contraseña)</td>
+            <td>@Html.ValidationMessageFor(m => m.Contraseña)</td>
+        </tr>
+        <tr>
+            <td>Nombre completo</td>
+            <td>@Html.TextBoxFor(m => m.NombreCompleto)</td>
+            <td>@Html.ValidationMessageFor(m => m.NombreCompleto)</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                @Html.Captcha(6)
+                <br/>
+                @ViewBag.error
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="Registrar"/></td>
+        </tr>
+    </table>
+}
